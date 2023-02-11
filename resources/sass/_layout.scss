@@ -1,0 +1,45 @@
+
+.layout-navbar {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 12%), 0 4px 6px rgb(0 0 0 / 6%)!important;
+}
+.bg-red {
+  background: #ad1457;
+}
+.bg-light-color {
+  background: #faf9f9;
+}
+.form-control {
+  box-shadow: none!important;
+}
+.border-bottom-red {
+  border-bottom: 3px solid #ad1457 !important;
+}
+.border-bottom-red-small {
+  border-bottom: 2px solid #ad1457 !important;
+}
+.border-top-red {
+  border-top: 3px solid #ad1457 !important;
+}
+main {
+  @include media-breakpoint-up(md) {
+    padding: 16px;
+  }
+  background: #ffffff;
+}
+.text-red {
+  color: red;
+}
+.list-red {
+    li::marker {
+      color: $primary;
+    }
+}
+.advert-card-primary {
+  border: 1px solid rgb(173 19 87);
+}
+.text-fs-small {
+  font-size: 14px;
+}
+.text-indent {
+  text-indent: 40px;
+}

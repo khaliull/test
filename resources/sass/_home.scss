@@ -1,0 +1,42 @@
+.img-analytics {
+    float:left;
+    margin: 5px 30px 10px 0;
+    border-radius: 5px;
+ }
+ .bg-header {
+    background: linear-gradient(301deg, rgb(235 253 252) 51%, rgb(134 190 187 / 26%) 51%);
+ }
+
+ h1 {
+   @include media-breakpoint-up(lg) {
+     font-size: 50px;
+   }
+ }
+ .information-card {
+   padding: 16px;
+   font-size: 12px;
+   font-weight: 300;
+   border-radius: 10px;
+    h6 {
+      font-weight: bold;
+    }
+ }
+ .information-card-bg-one {
+   background: #e0eeed;
+ }
+
+ .information-card-bg-two {
+   background: #e0eee3;
+ }
+ .information-card-bg-three {
+   background: #e8eee0;
+ }
+ .information-card-bg-four {
+   background: #eeeae0;
+ }
+ .information-card-bg-five {
+   background: #eee0e0;
+ }
+ .information-card-bg-six {
+   background: #eecaca;
+ }

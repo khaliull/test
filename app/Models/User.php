@@ -48,6 +48,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-    return $this->is_admin; 
+        return $this->is_admin;
     }
+    
+    public function tests()
+    {
+        return $this->hasMany('App\Models\Test');
+    }
+
 }

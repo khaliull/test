@@ -18,10 +18,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['title' => 'Главная']);
-    }
-    public function welcome()
-    {
         return view('welcome', ['title' => 'Главная']);
     }
+
+
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Test;
+use App\Models\TestType;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -14,23 +17,54 @@ class TestController extends Controller
         $this->middleware('admin');
     }
 
-    public function create()
+    public function index()
+    {
+        $categories = Category::all();
+        $types = TestType::all();
+
+        return view('admin.tests.test_create', [
+          'title' => 'Добавление теста',
+          'tests' => Test::latest()->get(),
+          'categories' => $categories,
+          'types' => $types
+        ]);
+    }
+
+    public function createCategory()
     {
         $data = request()->validate([
-          'name' => 'required|string|max:255|unique:tests',
+          'title' => 'required|string|max:255',
+          'header_text' => 'required|string',
         ]);
 
-        auth()->user()->tests()->create($data);
+        $category = Category::create($data);
 
         return redirect()->back();
     }
 
-    public function index()
+    public function createCategoryIndex()
     {
-        return view('admin.tests.test_create', [
-          'title' => 'Добавление теста',
-          'tests' => Test::latest()->get()
+        $categories = Category::all();
+
+        return view('admin.tests.category_create', [
+          'title' => 'Добавление категорий',
+          'categories' => $categories
         ]);
+    }
+
+    public function create()
+    {
+        $data = request()->validate([
+          'name' => 'required|string|max:255|unique:tests',
+          'type' => 'required|string|max:255',
+          'category_id' => 'required',
+        ]);
+
+        $data['key'] = Str::random(24);
+
+        auth()->user()->tests()->create($data);
+
+        return redirect()->back();
     }
 
 }

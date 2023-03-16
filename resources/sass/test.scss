@@ -1,0 +1,48 @@
+.test-table {
+  table, th, tr {
+    text-align: center;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 12px;
+  }
+  border: 2px solid #039300;
+
+}
+.test-table > :not(:first-child) {
+    border-top: 2px solid #039300!important;
+}
+.test-table > :not(caption) > * > * {
+    border-width: 0 2px;
+}
+.test-table > :not(caption) > * {
+    border-width: 2px 2px;
+}
+.result-success {
+    background: #54e86e!important;
+}
+
+.result-error {
+    background: #e85454!important;
+}
+.circle {
+    width: 60px!important;
+    @include media-breakpoint-up(md) {
+      width: 90px!important;
+    }
+}
+
+.test-result-chart {
+    height: 250px!important;
+    width: 100%!important;
+}
+
+.text-link-white {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.text-link-white:hover {
+    color: #000;
+    background-color: #cebffa;
+    border-color: #ffffff;
+}

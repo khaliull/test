@@ -1,0 +1,76 @@
+.test-card {
+
+    position: relative;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+  border-radius: 5px;
+  background-color: #f0f0f0;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+}
+.test-card:hover {
+    box-shadow: 5px 5px 16px rgb(163 172 181 / 20%) !important;
+    background-color: #ebeaea;
+    transform: translateY(-3px);
+  }
+.test-link {
+  color: #000000;
+  text-decoration: none!important;
+}
+.test-link:hover {
+  color: #555555;
+}
+.test-bg {
+  background-color: #c7afff;
+  color: #ffffff;
+}
+
+.test-card-questions {
+  border: 4px solid white;
+  padding: 60px 30px;
+  border-radius: 35px;
+  margin-top: 80px;
+  background: #ccb6fd;
+  .form-check-input:checked {
+    background-color: #713effc4;
+    border-color: #ffffff;
+  }
+
+  .form-check-input {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    @include media-breakpoint-up(md) {
+      height: 23px;
+      width: 23px;
+    }
+  }
+}
+
+.test-card-questions-ladel {
+  font-size: 18px;
+  @include media-breakpoint-up(md) {
+    font-size: 20px;
+  }
+}
+
+.test-btn {
+  border: 3px solid #9a7dda;
+  color: #fff;
+  background: #bb9cf2;
+  border-radius: 10px;
+  padding: 10px 0px;
+  width: 49%;
+}
+
+.test-invited-block {
+  button {
+    background-color: #b3cbe1;
+    border-color: #b3cbe1;
+  }
+  @include media-breakpoint-up(md) {
+    width: 60%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 40%;
+  }
+}

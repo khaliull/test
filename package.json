@@ -24,6 +24,9 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "react-select": "^5.7.0"
+        "react-circular-progressbar": "^2.1.0",
+        "react-select": "^5.7.0",
+        "recharts": "^2.4.3",
+        "use-clipboard-copy": "^0.2.0"
     }
 }

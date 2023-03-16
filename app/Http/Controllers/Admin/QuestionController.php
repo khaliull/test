@@ -28,7 +28,9 @@ class QuestionController extends Controller
           'name' => 'required|string|max:255',
           'type' => 'required|string|max:255',
           'data' => 'nullable',
+          'correct_answer' => 'nullable'
         ]);
+
         $array = $data['data'];
         $data['data'] = [];
 
@@ -42,6 +44,10 @@ class QuestionController extends Controller
         $data['position'] = $test->questions()->count();
         $question = $test->questions()->create($data);
 
+        if ($test->type == 'answerTest') {
+          $test->correctAnswers()->create(['correct_answer' => $data['correct_answer'], 'question_id' => $question->id]);
+        }
+        
         return $question;
     }
 }

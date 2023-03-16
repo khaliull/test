@@ -7,6 +7,22 @@
       @csrf
       <h1 class="text-center mb-5">Добавить тест</h1>
       <div class="mb-3">
+         <label for="testTitle" class="form-label">Название раздела</label><br>
+         <select name="category_id" class="form-select" required>
+           @foreach($categories as $category)
+           <option value="{{$category->id}}">{{$category->title}}</option>
+           @endforeach
+         </select>
+      </div>
+      <div class="mb-3">
+         <label for="testTitle" class="form-label">Тип теста</label><br>
+         <select name="type" class="form-select" required>
+           @foreach($types as $type)
+           <option value="{{$type->name}}">{{$type->title}}</option>
+           @endforeach
+         </select>
+      </div>
+      <div class="mb-3">
          <label for="testName" class="form-label">Название теста</label>
          <input type="text" name="name" class="form-control" required id="testName">
       </div>
@@ -18,6 +34,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-8">
+            <h5 class="text-center">Раздел: {{$test->title}}</h5>
             {{$test->name}}
           </div>
           <div class="col-4 text-end">

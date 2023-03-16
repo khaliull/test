@@ -50,10 +50,14 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
-    
+
     public function tests()
     {
         return $this->hasMany('App\Models\Test');
+    }
+    public function passedTest()
+    {
+        return $this->hasMany('App\Models\PassedTest');
     }
 
 }

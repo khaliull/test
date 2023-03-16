@@ -15,11 +15,14 @@ class QuestionCreate extends React.Component {
       answer: '',
       answers: [],
       name: null,
+      correctAnswer: '',
       options : [
         { value: 'text', label: 'Письменный ответ на вопрос' },
         { value: 'selectDropdown', label: 'Выбор ответа из выпадающего списка' },
         { value: 'selectRadio', label: 'Выбор ответа' },
-      ]
+      ],
+      answerOptions: [],
+
     }
 
     this.addAnswer = this.addAnswer.bind(this)
@@ -29,16 +32,23 @@ class QuestionCreate extends React.Component {
   addAnswer() {
     let array = this.state.answers
     array.push([this.state.answer])
+    let answerOptions = this.state.answerOptions
+    answerOptions.push({value: this.state.answerOptions.length, label: this.state.answer})
     this.setState({answers: array, answer: ''})
   }
 
   async saveAnswer() {
+
     const form = new FormData()
 
     form.append('name', this.state.name)
     form.append('type', this.state.type)
 
     if (this.state.type == 'selectDropdown' || this.state.type == 'selectRadio') {
+      if (this.state.test.type == 'answerTest' && !this.state.correctAnswer) {
+        return;
+      }
+      form.append('correct_answer', this.state.correctAnswer ? this.state.correctAnswer : null)
       this.state.answers.forEach(answer => form.append('data[]', answer))
     } else {
       form.append('data', null)
@@ -56,10 +66,10 @@ class QuestionCreate extends React.Component {
 
       return
     }
-    console.log(response.data)
+
     let array = this.state.questions
     array.push(response.data)
-    this.setState({questions: array})
+    this.setState({questions: array, answers: [], correctAnswer: '', name: '', answerOptions: []})
   }
 
   render() {
@@ -73,16 +83,28 @@ class QuestionCreate extends React.Component {
             {this.state.type && (
               <div className="mb-3">
                 <label htmlFor="textName" className="form-label">Введите вопрос</label>
-                <input type="text" onChange={(e) => this.setState({name: e.target.value})} className="form-control" id="textName" />
+                <input type="text" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} className="form-control" id="textName" />
               </div>
             )}
             {(this.state.type == 'selectDropdown' || this.state.type == 'selectRadio') && (
-            <div className="mb-3">
-              <label htmlFor="textName" className="form-label">Вариант ответа</label>
-              <input value={this.state.answer} type="text" onChange={(e) => this.setState({answer: e.target.value})} className="form-control mb-3" id="textName" />
-              <button disabled={!this.state.answer} className="btn btn-primary" onClick={() => this.addAnswer()}>Добавить вариант ответа</button>
+            <div>
+              <div className="mb-3">
+                <label htmlFor="textName" className="form-label">Вариант ответа</label>
+                <input value={this.state.answer} type="text" onChange={(e) => this.setState({answer: e.target.value})} className="form-control mb-3" id="textName" />
+                <button disabled={!this.state.answer} className="btn btn-primary" onClick={() => this.addAnswer()}>Добавить вариант ответа</button>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Добавленные варианты для ответов</label>
+                <Select placeholder={'Добавлено: ' + this.state.answerOptions.length} options={this.state.answerOptions} />
+              </div>
             </div>
             )}
+            {this.state.test.type == 'answerTest' && this.state.answers.length ? (
+              <div className="mb-3">
+                <label className="form-label">Правильный вариант ответа</label>
+                <Select placeholder="Выберите правильный ответ" onChange={(e) => this.setState({correctAnswer: e.label})} options={this.state.answerOptions} />
+              </div>
+            ): null}
             {this.state.type == 'text' ? (
               <button disabled={!this.state.name} className="btn btn-primary" onClick={() => this.saveAnswer()}>Добавить вопрос</button>
             ) : (this.state.type == 'selectDropdown' || this.state.type == 'selectRadio') && (

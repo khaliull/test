@@ -9,8 +9,12 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'data' => 'array'
+    ];
+
     protected $fillable = [
-        'title', 'header_text'
+        'title', 'data'
     ];
 
     public function tests()

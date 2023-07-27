@@ -7,7 +7,7 @@
       @csrf
       <h1 class="text-center mb-5">Добавить тест</h1>
       <div class="mb-3">
-         <label for="testTitle" class="form-label">Название раздела</label><br>
+         <label class="form-label">Название раздела</label><br>
          <select name="category_id" class="form-select" required>
            @foreach($categories as $category)
            <option value="{{$category->id}}">{{$category->title}}</option>
@@ -15,7 +15,7 @@
          </select>
       </div>
       <div class="mb-3">
-         <label for="testTitle" class="form-label">Тип теста</label><br>
+         <label class="form-label">Тип теста</label><br>
          <select name="type" class="form-select" required>
            @foreach($types as $type)
            <option value="{{$type->name}}">{{$type->title}}</option>
@@ -23,8 +23,29 @@
          </select>
       </div>
       <div class="mb-3">
-         <label for="testName" class="form-label">Название теста</label>
-         <input type="text" name="name" class="form-control" required id="testName">
+         <label class="form-label">Вывод результата</label><br>
+         <select name="result" class="form-select" required>
+           <option value="text">Текстом</option>
+           <option value="answer">Таблица с правильным вариантом</option>
+           <option value="paired">Совместные тесты</option>
+           <option value="psychology">Текст психологии зависит от ответов</option>
+         </select>
+      </div>
+      <div class="mb-3">
+        <label for="testName" class="form-label">Название теста</label>
+        <input type="text" name="name" class="form-control" required id="testName">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Результат плохо</label><br>
+        <textarea class="w-100" rows="4" name="data[result_bad]" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Результат нормальный</label><br>
+        <textarea class="w-100" rows="4" name="data[result_normal]" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Результат идеальный</label><br>
+        <textarea class="w-100" rows="4" name="data[result_good]" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary w-100 mb-5">Добавить</button>
     </form>

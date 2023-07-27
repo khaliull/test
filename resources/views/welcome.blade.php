@@ -7,7 +7,7 @@
       <div class="col-6">
         <h1 class="fw-light mb-5">Проверь свою совместимость с человеком </h1>
         <p class="mb-1">Выполнив&nbsp;совместные&nbsp;тесты&nbsp;- </p><p class="ps-md-4 mb-md-4">можно понять многое о человеке</p>
-        <button class="btn btn-sm  btn-outline-info px-5">Пройти тест</button>
+        <a class="btn btn-sm px-5 test-btn-info" href="{{ route('tests.index') }}">Пройти тест</a>
       </div>
       <div class="col-lg-5 col-6">
         <img class="img-fluid" src="/images/home/header.png">
@@ -65,6 +65,16 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container border-top border-bottom border-danger border-3 py-4">
+  <h2 class="text-center mb-4">Интересные факты</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+    @foreach($facts as $fact)
+      <p class="fact-show">{{$fact->content}}</p>
+    @endforeach
+  </div>
   </div>
 </div>
 @endsection

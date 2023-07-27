@@ -17,7 +17,9 @@ class CreateTestsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
+            $table->json('data')->nullable();
             $table->string('name')->unique();
+            $table->string('result');
             $table->string('type')->default('test');
             $table->string('key')->unique();
             $table->boolean('active')->default(false);

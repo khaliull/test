@@ -26,6 +26,7 @@ class QuestionCreate extends React.Component {
     }
 
     this.addAnswer = this.addAnswer.bind(this)
+    this.updateStatusTest = this.updateStatusTest.bind(this)
 
   }
 
@@ -35,6 +36,22 @@ class QuestionCreate extends React.Component {
     let answerOptions = this.state.answerOptions
     answerOptions.push({value: this.state.answerOptions.length, label: this.state.answer})
     this.setState({answers: array, answer: ''})
+  }
+
+  async updateStatusTest() {
+    let response
+
+    try {
+
+      response = await axios.post('/admin/test/' + test.id + '/update-status')
+
+    } catch(error) {
+
+      alert('Произошла ошибка, попробуйте еще раз')
+
+      return
+    }
+    location.reload()
   }
 
   async saveAnswer() {
@@ -76,9 +93,13 @@ class QuestionCreate extends React.Component {
 
     return (
       <div>
+        <div className="mb-3">
+        Статус теста: {this.state.test.active == 1 ? 'Запущен' : 'Не активный'}
+        <button className="btn btn-success mt-3 w-100" onClick={() => this.updateStatusTest()}>Запуск/остановить</button>
+        </div>
         <div>
           <h5>Добавить вопрос</h5>
-          <div>{    console.log(this.state.questions)}
+          <div>
             <Select className="mb-3" onChange={(e) => this.setState({type: e.value, answers: []})} options={this.state.options} />
             {this.state.type && (
               <div className="mb-3">

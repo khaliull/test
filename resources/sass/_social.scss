@@ -1,0 +1,36 @@
+.vk {
+  background: #5181B8!important;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none!important;
+}
+.telegram {
+  background: #37AEE2!important;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none!important;
+}
+.instagram {
+  background: radial-gradient(230.93% 230.93% at 102.01% 2.03%, #F9ED32 0%, #EE2A7B 36%, #D22A8A 44%, #8B2AB2 60%, #1B2AF0 83%, #002AFF 88%);
+  transform: rotate(180deg);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none!important;
+}
+
+.btn-telegram {
+  background: #37AEE2;
+  padding: 4px;
+}
+.btn-telegram:hover {
+  background: #3298c5;
+}
+.btn-telegram:focus {
+  background: #3298c5;
+}
+.btn-telegram:active {
+  background: #3298c5;
+}

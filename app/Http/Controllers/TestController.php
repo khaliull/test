@@ -34,6 +34,12 @@ class TestController extends Controller
         $pairedTest = PairedTest::where('key', $request->key)->whereNull('second_user_id')->first();
 
         if (!$pairedTest) {
+           $request->session()->flash('pairedTestVerification', 'Тест с таким ключом приглашения не найден');
+           return redirect()->back();
+        }
+
+        if ($pairedTest->first_user_id == auth()->user()->id) {
+          $request->session()->flash('pairedTestVerification', 'Данного пользователя невозможно пригласить для прохождения совместного теста');
           return redirect()->back();
         }
 
@@ -88,7 +94,7 @@ class TestController extends Controller
 
         if ($questionsCountTest == $questionsCountPassedTest) {
           $passedTest->update(['finished' => 1]);
-          
+
           if ($test->type == "pairedTest") {
             $pairedTest = PairedTest::where('test_id', $test->id)->where('second_passed_test_id', $passedTest->id)->where('second_finished', 0)->first();
             if ($pairedTest) {

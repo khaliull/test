@@ -15,23 +15,19 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body class="bg-body">
-    <div id="app" class="h-100 container bg-white px-0">
-        <nav class="navbar navbar-expand-md navbar-light border-bottom-red px-3">
-          <a class="navbar-brand" href="{{ url('/') }}">
-          Админка
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-
-
-        </nav>
-      </div>
-
-      <main class="container py-5">
-        @yield('content')
-      </main>
-
+    <div id="app" class="container bg-white px-0">
+      <nav class="navbar navbar-expand-md navbar-light border-bottom-red px-3">
+        <a class="navbar-brand" href="{{ url('/') }}">
+        Вернуться на сайт с админки
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
     </div>
+    <main class="container py-5">
+      @yield('content')
+    </main>
+
   </body>
 </html>

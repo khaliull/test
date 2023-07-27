@@ -12,7 +12,10 @@ class QuestionCreate extends React.Component {
     this.state = {
       test: window.test,
       questions: window.questions,
-      result: window.result
+      result: window.result,
+      text: window.text,
+      facts: window.facts,
+      progress: window.progress,
     }
   }
 
@@ -20,36 +23,29 @@ class QuestionCreate extends React.Component {
 
     return (
       <div>
-      {this.state.test && this.state.test.type == 'asnwerTest' ? (
-        <>
-        <table className="table table-bordered test-table mb-5">
-          <thead>
-            <tr>
-              <th scope="col" width="10%">Номер<br />вопроса</th>
-              <th scope="col" width="40%">Вопрос</th>
-              <th scope="col" width="25%">Ваш ответ</th>
-              <th scope="col" width="25%">Правильный вариант ответа</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.questions.map((question, key) => (
-              <tr key={key}>
-                <th scope="row">{question.position + 1}</th>
-                <td>{question.name}</td>
-                <td className={`${question.answer == question.correct_answer ? 'result-success' : 'result-error'}`}>{question.answer}</td>
-                <td>{question.correct_answer}</td>
-              </tr>
+        {this.state.test && this.state.test.result == 'answer' ? (
+          <>
+            <h4 className="mb-3 fw-light">Общая статистика теста</h4>
+            <Chart data={this.state.result} />
+            <div className="mt-5">
+            Вы ответили правильно по 100 бальной шкале:
+              <div className="progress test-progress mt-3">
+                <div className={`progress-bar text-danger ${this.state.progress < 0.4 ? 'test-progress-bar-danger' : 'test-progress-bar-success' }`} role="progressbar" style={{width: this.state.progress * 100 +'%'}} aria-valuenow="1" aria-valuemin="1" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </>
+        ) : this.state.test.result == 'paired' ? (
+          <PairedTest results={this.state.result} test={this.state.test} />
+        ) : null}
+        <div className="row justify-content-center mt-5">
+          <div className="col-lg-6">
+            <p className="pb-4 border-bottom border-danger border-2">Вывод: {this.state.text}</p>
+            <h5>Интересные факты</h5>
+            {this.state.facts.map((fact, index) => (
+              <p className="fact-show" key={index}>{fact.content}</p>
             ))}
-
-          </tbody>
-        </table>
-        <h4 className="mb-3">Общая статистика теста</h4>
-        <Chart data={this.state.result} />
-        </>
-      ) : this.state.test.type == 'pairedTest' ? (
-        <PairedTest results={this.state.result} test={this.state.test} />
-      ) : null}
-
+          </div>
+        </div>
       </div>
     )
   }

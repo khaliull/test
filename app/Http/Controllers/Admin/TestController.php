@@ -34,7 +34,7 @@ class TestController extends Controller
     {
         $data = request()->validate([
           'title' => 'required|string|max:255',
-          'header_text' => 'required|string',
+          'data' => 'required',
         ]);
 
         $category = Category::create($data);
@@ -58,6 +58,8 @@ class TestController extends Controller
           'name' => 'required|string|max:255|unique:tests',
           'type' => 'required|string|max:255',
           'category_id' => 'required',
+          'data' => 'required',
+          'result' => 'required|string|max:255',
         ]);
 
         $data['key'] = Str::random(24);
@@ -65,6 +67,13 @@ class TestController extends Controller
         auth()->user()->tests()->create($data);
 
         return redirect()->back();
+    }
+
+    public function updateStatus(Test $test)
+    {
+        $test->update(['active' => !$test->active]);
+
+        return 'ok';
     }
 
 }

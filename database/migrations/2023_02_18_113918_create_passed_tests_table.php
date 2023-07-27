@@ -18,7 +18,6 @@ class CreatePassedTestsTable extends Migration
           $table->foreignId('user_id');
           $table->foreignId('test_id');
           $table->boolean('finished')->default(false);
-          $table->string('paired_test_key')->nullable();
           $table->timestamps();
 
           $table->foreign('user_id')->references('id')->on('users');

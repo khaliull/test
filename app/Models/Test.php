@@ -9,12 +9,18 @@ class Test extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'data' => 'array'
+    ];
+
     protected $fillable = [
         'name',
         'active',
         'category_id',
         'key',
-        'type'
+        'type',
+        'result',
+        'data'
     ];
 
     public function questions()

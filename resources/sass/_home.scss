@@ -7,7 +7,7 @@
    background: linear-gradient(301deg, #edbccb6b 51%, rgb(152 228 215 / 26%) 51%);
  }
  .bg-header-container {
-   background: linear-gradient(301deg, rgb(235 253 252) 40%, rgb(134 190 187 / 26%) 40%);
+   background: linear-gradient(301deg, #edbccb6b 51%, rgb(152 228 215 / 26%) 51%);
  }
 
  h1 {
@@ -42,4 +42,9 @@
  }
  .information-card-bg-six {
    background: #eecaca;
+ }
+
+ .fact-show {
+   font-size: 11px;
+   font-weight: lighter;
  }

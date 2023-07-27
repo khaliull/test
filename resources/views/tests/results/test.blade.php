@@ -1,16 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-header-container">
-  <div class="container pt-lg-5 pt-4 pb-5">
-    <div class="row align-items-center justify-content-end">
-      <div class="col-12">
-        <h1 class="fw-light text-center mb-5">Раздел: </h1>
-        <p class="mb-1">Выполнив&nbsp;совместные&nbsp;тесты&nbsp;- </p><p class="ps-md-4 mb-md-4">можно понять многое о человеке</p>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container bg-white py-5">
   <div class="row justify-content-center">
     <div class="col-md-10">
@@ -25,5 +15,7 @@
 <script>var questions = @json($questions)</script>
 <script>var result = @json($result)</script>
 <script>var test = @json($test)</script>
-
+<script>var text = @json($text)</script>
+<script>var facts = @json($facts)</script>
+<script>var progress = @json($progress)</script>
 @endsection

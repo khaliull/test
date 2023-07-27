@@ -1,0 +1,39 @@
+.result-card {
+  padding: 10px;
+  border: 1px solid #b8b8b8;
+  margin-bottom: 3px;
+  border-radius: 5px;
+
+  a {
+    color: #41464b;
+    text-decoration: none;
+  }
+}
+
+.result-card-closed {
+  background: #fcf4f4;
+}
+
+.result-card-active {
+  background: #e3f1e9;
+}
+
+.result-card:hover {
+  background: #f2e2e2!important;
+
+  a {
+    color: #000000!important;
+  }
+}
+.test-progress {
+    height: 2rem;
+    font-size: 1rem;
+    background-color: #e9ecef;
+}
+.test-progress-bar-danger {
+    background-color: #d78484;
+}
+
+.test-progress-bar-success {
+  background-color: #85d88f;
+}

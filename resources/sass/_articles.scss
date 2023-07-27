@@ -1,0 +1,17 @@
+.article-card {
+  max-height: 250px;
+  box-shadow: 0px 10px 15px 10px rgba(0,0,0,0.1);
+  border: none;
+  padding-bottom: 30px;
+
+  .card-body {
+    padding: 24px 24px 0 24px;
+    overflow: hidden;
+  }
+}
+.article-card:hover {
+  .text-link {
+    color:red!important;
+  }
+  opacity: 0.7;
+}

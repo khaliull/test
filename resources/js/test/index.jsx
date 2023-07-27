@@ -122,7 +122,6 @@ class QuestionCreate extends React.Component {
       return
     }
     this.setState({activeQuestion: response.data.question, answer: response.data.lastAnswer.answer, nextTwoQuestion: true})
-    console.log(response.data)
   }
 
   render() {
